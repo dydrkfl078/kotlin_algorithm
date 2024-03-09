@@ -1,6 +1,6 @@
 package com.example.algorithm_programmers.lv1
 
-fun solution(array: IntArray, height: Int): Int {
+private fun solution(array: IntArray, height: Int): Int {
     var answer: Int = array.filter { it > height }.size
     return answer
 }

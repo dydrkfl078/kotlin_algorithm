@@ -2,7 +2,7 @@ package com.example.algorithm_programmers.lv1
 
 import kotlin.math.abs
 
-fun solution(dots: Array<IntArray>): Int {
+private fun solution(dots: Array<IntArray>): Int {
     var point1: Pair<Int,Int> = Pair(dots[0][0],dots[0][1])
 
     var width = 0
@@ -20,9 +20,8 @@ fun solution(dots: Array<IntArray>): Int {
     return answer
 }
 
-
-
 fun main() {
     val solu = arrayOf(intArrayOf(-1,-1), intArrayOf(1,1), intArrayOf(-1,1),intArrayOf(1,-1))
     print(solution(solu))
+
 }
