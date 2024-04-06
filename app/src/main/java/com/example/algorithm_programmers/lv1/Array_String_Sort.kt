@@ -1,5 +1,10 @@
 package com.example.algorithm_programmers.lv1
 
+private fun refactorSolution (strings: Array<String>, n: Int): Array<String> {
+    val answer = strings.sorted().sortedBy { it[n] }.toTypedArray()
+    return answer
+}
+
 private fun solution (strings: Array<String>, n: Int): Array<String> {
     var answer = mutableListOf<String>()
 
@@ -20,7 +25,9 @@ private fun solution (strings: Array<String>, n: Int): Array<String> {
 
 fun main() {
     var testA = arrayOf("sun","bed","car")
-    var testB = arrayOf("car","pair","fail")
+    var testB = arrayOf("pair","fail","car")
 
     solution(testA,1)
+    refactorSolution(testB,1)
+
 }
