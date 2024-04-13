@@ -11,5 +11,3 @@ fun main() {
     var testB = intArrayOf(5, 7, 8, 3)
     println(solution(testA))
 }
-
-// 깃모지 테스트용 주석
