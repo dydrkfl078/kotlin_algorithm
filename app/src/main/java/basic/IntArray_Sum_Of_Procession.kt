@@ -19,4 +19,24 @@ fun main() {
 
     solution(testA,testB).forEach { println(it.toList()) }
     solution(testC,testD).forEach { println(it.toList()) }
+
+    val testArr = (50..100).toList().toIntArray()
+    println(testFun2(testArr,51))
+}
+
+fun testFun2(n: IntArray, target: Int): Int {
+    var left = 0
+    var right = n.size - 1
+
+    while (left <= right) {
+        val mid = left + (right - left) / 2
+        val midValue = n[mid]
+
+        when {
+            midValue == target -> return mid + 1
+            midValue < target -> left = mid + 1
+            else -> right = mid - 1
+        }
+    }
+    return -1
 }
