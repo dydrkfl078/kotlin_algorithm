@@ -1,20 +1,20 @@
 package programmers_lv1
 
-private fun solution (str: String, n: Int ) : String {
+private fun solution(str: String, n: Int): String {
     var answer = ""
     str.map {
         var unicode = it.code
-        if ( (97..122).contains(unicode) ) {
+        if ((97..122).contains(unicode)) {
             answer += if (unicode + n > 122) {
                 (96 + (unicode + n - 122) % 25).toChar()
             } else {
-                (unicode + n ).toChar()
+                (unicode + n).toChar()
             }
-        }  else if ((65..90).contains(unicode)) {
+        } else if ((65..90).contains(unicode)) {
             answer += if (unicode + n > 90) {
                 (64 + (unicode + n - 90) % 25).toChar()
             } else {
-                (unicode + n ).toChar()
+                (unicode + n).toChar()
             }
         } else {
             answer += it
@@ -23,13 +23,28 @@ private fun solution (str: String, n: Int ) : String {
     return answer
 }
 
+private fun solution2(str: String, n: Int): String {
+    var answer = ""
+    str.map {
+        answer += when (it) {
+            in 'a'..'z' -> ('a'.code + (it.code + n - 'a'.code) % ('z' - 'a' + 1)).toChar()
+            in 'A'..'Z' -> ('A'.code + (it.code + n - 'A'.code) % ('Z' - 'A' + 1)).toChar()
+            else -> {
+                it
+            }
+        }
+    }
+
+    return answer
+}
+
 
 fun main() {
     var testA = "a B z"
 
-    println(solution(testA,4))
-    println(solution("AB",1))
-    println(solution("z",1))
+    println(solution2(testA, 4))
+    println(solution2("AB", 1))
+    println(solution2("z", 1))
 
     println(" ".isEmpty())
     println("".isEmpty())
