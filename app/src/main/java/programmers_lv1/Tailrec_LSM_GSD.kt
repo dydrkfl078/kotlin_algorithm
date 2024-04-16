@@ -1,7 +1,7 @@
 package programmers_lv1
 
-// LCM = Least Common Multiple 최소 공배수 , GCD = Greatest Common Divisor
-private fun solution(n: Int, m: Int): LongArray {
+// LSM = Least Common Multiple 최소 공배수 , GSD = Greatest Common Divisor
+fun solution(n: Int, m: Int): LongArray {
     var numbers = intArrayOf(n,m).sorted()
 
     tailrec fun gcd(a: Int, b: Int): Int {
@@ -10,8 +10,8 @@ private fun solution(n: Int, m: Int): LongArray {
     }
 
     val GCD = gcd(numbers[0],numbers[1])
-    val LCM = m.toLong() * n.toLong() / GCD
-    val answer = longArrayOf(GCD.toLong(), LCM)
+    val LSM = m.toLong() * n.toLong() / GCD
+    val answer = longArrayOf(GCD.toLong(), LSM)
     return answer
 }
 
