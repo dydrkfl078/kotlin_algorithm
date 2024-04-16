@@ -42,12 +42,14 @@ private fun solution2(str: String, n: Int): String {
 fun main() {
     var testA = "a B z"
 
-    println(solution2(testA, 4))
+    println(solution2(testA, 4+26+26+26+26))
     println(solution2("AB", 1))
     println(solution2("z", 1))
 
     println(" ".isEmpty())
     println("".isEmpty())
+
+
     println("a B z".split("")[0])
 
 }
