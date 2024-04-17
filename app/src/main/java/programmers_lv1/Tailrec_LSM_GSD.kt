@@ -10,8 +10,8 @@ fun solution(n: Int, m: Int): LongArray {
     }
 
     val GCD = gcd(numbers[0],numbers[1])
-    val LSM = m.toLong() * n.toLong() / GCD
-    val answer = longArrayOf(GCD.toLong(), LSM)
+    val LCM = m.toLong() * n.toLong() / GCD
+    val answer = longArrayOf(GCD.toLong(), LCM)
     return answer
 }
 
