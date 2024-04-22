@@ -1,16 +1,24 @@
 package programmers_lv1
 
 import java.util.LinkedList
+import java.util.Queue
 import java.util.Stack
 
 private fun solution(board: Array<IntArray>, moves: IntArray): Int {
     var answer = 0
 
-    val queueList = board[0].indices.map { colIndex ->
-        LinkedList(board.map { it[colIndex] }.filter { it != 0 })
-    }.toMutableList()
-
+    var queueList = mutableListOf<Queue<Int>>()
     var basket = Stack<Int>()
+
+    for (i in board.indices) {
+        var stack = LinkedList<Int>()
+
+        board.forEach {
+            if (it[i] != 0) {stack.add(it[i])}
+        }
+
+        queueList.add(stack)
+    }
 
     moves.forEach {
         queueList[it-1].poll()?.let { num ->
