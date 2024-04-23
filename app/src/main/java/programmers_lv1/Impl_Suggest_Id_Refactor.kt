@@ -25,7 +25,7 @@ fun String.step4 () = this.removePrefix(".").removeSuffix(".")
 
 fun String.step5 () = this.ifEmpty { "a" }
 
-fun String.step6 () = (if (this.length > 15) this.take(15) else this).removeSuffix(".")
+fun String.step6 () = (if (this.length > 15) this.take(15) else this).removePrefix(".")
 
 fun String.step7 () : String {
     tailrec fun minLength (str: String) : String {
