@@ -1,7 +1,7 @@
 package programmers_lv1
 
 // LSM = Least Common Multiple 최소 공배수 , GSD = Greatest Common Divisor
-fun solution(n: Int, m: Int): LongArray {
+private fun solution(n: Int, m: Int): LongArray {
     var numbers = intArrayOf(n,m).sorted()
 
     tailrec fun gcd(a: Int, b: Int): Int {
