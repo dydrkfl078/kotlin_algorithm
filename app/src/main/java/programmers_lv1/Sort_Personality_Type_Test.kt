@@ -26,7 +26,8 @@ private fun solution(survey: Array<String>, choices: IntArray): String {
                 'R', 'T' -> caseRT.add(this[i])
             }
         }
-
+        
+        // todo maxByOrNull로 합계를 계산하지 않는 문제. 합계 후 maxBy 수행할 것
         listOf(caseRT,caseCF,caseMJ,caseNA).forEach {
             it.sortedBy { it.first }.maxByOrNull { it.second }.let { answer += it!!.first }
         }
@@ -35,9 +36,10 @@ private fun solution(survey: Array<String>, choices: IntArray): String {
     return answer
 }
 
+
 fun main() {
-    val testSurvey = arrayOf("NA","AN")
-    val testChoices = intArrayOf(4,3)
+    val testSurvey = arrayOf("NA","AN","RT","RT","CF","FC","MJ","JM")
+    val testChoices = intArrayOf(4,4,4,4,4,4,4,4)
 
     println(solution(testSurvey,testChoices))
 }
