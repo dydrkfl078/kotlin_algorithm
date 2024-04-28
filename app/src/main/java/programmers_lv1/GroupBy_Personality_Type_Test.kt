@@ -1,7 +1,6 @@
 package programmers_lv1
 private fun solution(survey: Array<String>, choices: IntArray): String {
     var answer: String = ""
-    val orders = listOf("RT", "CF", "JM", "AN")
 
     survey.mapIndexed { index, str ->
         if ( choices[index] > 4) {
@@ -12,35 +11,24 @@ private fun solution(survey: Array<String>, choices: IntArray): String {
             '0' to 0
         }
     }.run {
+        var caseNA = mutableListOf<Pair<Char,Int>>(Pair('A',0))
+        var caseCF = mutableListOf<Pair<Char,Int>>(Pair('C',0))
+        var caseMJ = mutableListOf<Pair<Char,Int>>(Pair('J',0))
+        var caseRT = mutableListOf<Pair<Char,Int>>(Pair('R',0))
 
         this.groupBy { it.first }.mapValues { (_, values) -> values.sumOf{it.second} }
-            .toMap()
-            .let { ans:Map<Char, Int> ->
-                orders.map {
-                    if (ans.getOrDefault(it[0], 0) >= ans.getOrDefault(it[1], 0)) it[0] else it[1]
+            .forEach {
+                when ( it.key ) {
+                    'A','N' -> caseNA.add(Pair(it.key,it.value))
+                    'C','F' -> caseCF.add(Pair(it.key,it.value))
+                    'M','J' -> caseMJ.add(Pair(it.key,it.value))
+                    'R','T' -> caseRT.add(Pair(it.key,it.value))
                 }
             }
-            .joinToString("").also { answer = it }
 
-
-        // Refactoring 이전 코드
-//        var caseNA = mutableListOf<Pair<Char,Int>>(Pair('A',0))
-//        var caseCF = mutableListOf<Pair<Char,Int>>(Pair('C',0))
-//        var caseMJ = mutableListOf<Pair<Char,Int>>(Pair('J',0))
-//        var caseRT = mutableListOf<Pair<Char,Int>>(Pair('R',0))
-//        this.groupBy { it.first }.mapValues { (_, values) -> values.sumOf{it.second} }
-//            .forEach {
-//                when ( it.key ) {
-//                    'A','N' -> caseNA.add(Pair(it.key,it.value))
-//                    'C','F' -> caseCF.add(Pair(it.key,it.value))
-//                    'M','J' -> caseMJ.add(Pair(it.key,it.value))
-//                    'R','T' -> caseRT.add(Pair(it.key,it.value))
-//                }
-//            }
-//
-//        listOf(caseRT,caseCF,caseMJ,caseNA).map {cases ->
-//            cases.sortedBy { it.first }.maxByOrNull { it.second }.let { answer += it!!.first }
-//        }
+        listOf(caseRT,caseCF,caseMJ,caseNA).map {cases ->
+            cases.sortedBy { it.first }.maxByOrNull { it.second }.let { answer += it!!.first }
+        }
     }
 
     return answer
