@@ -1,36 +1,31 @@
 package programmers_lv1
 
-import kotlin.math.sqrt
-
 private fun solution(number: Int, limit: Int, power: Int): Int {
+    var answer: Int = 0
 
-    return (1..number).map {
-        var n = it
-        val primeFactor = mutableSetOf<Int>(1,n)
-
-        for (i in 1..sqrt(n.toDouble()).toInt()) {
-            if (n % i == 0) {
-                primeFactor.add(i)
-                primeFactor.add(n/i)
+    answer = (1..number).toList().map {
+        it.countDividor(it,1,0).run {
+            if (this > limit) {
+                power
+            } else {
+                this
             }
         }
-
-        println(primeFactor.sorted())
-        if (primeFactor.size > limit) {
-            power
-        } else {
-            primeFactor.size
-        }
     }.sum()
+
+    return answer
 }
 
+tailrec fun Int.countDividor (n: Int, factor: Int ,count: Int ): Int {
+    if (n == factor) return count + 1
+    if (n % factor == 0) return this.countDividor(n,factor + 1, count + 1)
+    return this.countDividor(n, factor + 1, count)
+}
 
 fun main() {
-    val testN = 100000
-    val testLimit = 50
-    val testPower = 25
+    val testN = 10
+    val testLimit = 3
+    val testPower = 2
 
-//    println(sqrt((29).toDouble()).toInt())
-    println(solution(testN, testLimit, testPower))
-    println(sqrt((12).toDouble()).toInt())
+    println(solution(testN,testLimit,testPower))
 }
