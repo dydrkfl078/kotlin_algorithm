@@ -1,23 +1,30 @@
 package programmers_lv1
 
 private fun solution(ingredient: IntArray): Int {
+    var answer = 0
     var recipe = ingredient.joinToString("")
 
-    while (true) {
-        if (recipe.contains("1231")) {
-            recipe = recipe.replace("1231","")
+    var making = StringBuilder()
+
+
+    recipe.forEach {
+        if ( it == '1' && making.takeLast(3) == "123") {
+            making.delete(making.lastIndex-2,making.lastIndex+1)
+            println("if ${making}")
+            answer ++
         } else {
-            break
+            making.append(it)
+            println("else ${making}")
         }
     }
 
-    return ( ingredient.size - recipe.length ) / 4
+    return answer
 }
 
 fun main() {
     val testA = intArrayOf(1,2,3,1,1,2,1,2,3,1,3,1,1,2,3,1)
-    val testB = intArrayOf(1, 2, 3, 2, 1, 2, 3, 1, 1)
+    val testB = intArrayOf(2, 1, 1, 2, 3, 1, 2, 3, 1)
 
-    println(solution(testA))
+//    println(solution(testA))
     println(solution(testB))
 }
