@@ -1,49 +1,36 @@
 package programmers_lv1
 
-private fun solution(number: Int, limit: Int, power: Int): Int {
-    var answer = 0
-//    tailrec fun Int.countDividor (n: Int, factor: Int ,count: Int ): Int {
-//        if (n == factor || count > limit) return count + 1
-//        if (n % factor == 0) return this.countDividor(n,factor + 1, count + 1)
-//        return this.countDividor(n, factor + 1, count)
-//    }
+import kotlin.math.sqrt
 
+private fun solution(number: Int, limit: Int, power: Int): Int {
 
     return (1..number).map {
         var n = it
-        val primeFactor = mutableListOf<Int>(1)
+        val primeFactor = mutableSetOf<Int>(1,n)
 
-        while (n % 2 == 0) {
-            primeFactor.add(n)
-            n /= 2
-        }
-
-        (3..Math.sqrt(n.toDouble()).toInt() step 2).forEach { odd ->
-            while (n % odd == 0) {
-                primeFactor.add(n)
-                n /= odd
+        for (i in 1..sqrt(n.toDouble()).toInt()) {
+            if (n % i == 0) {
+                primeFactor.add(i)
+                primeFactor.add(n/i)
             }
         }
 
-        if (n > 2) {
-            primeFactor.add(n)
-        }
-
         println(primeFactor.sorted())
-
-        if (primeFactor.count() > limit) {
-            limit
+        if (primeFactor.size > limit) {
+            power
         } else {
-            primeFactor.count()
+            primeFactor.size
         }
     }.sum()
 }
 
 
 fun main() {
-    val testN = 10
-    val testLimit = 3
-    val testPower = 2
+    val testN = 100000
+    val testLimit = 50
+    val testPower = 25
 
+//    println(sqrt((29).toDouble()).toInt())
     println(solution(testN, testLimit, testPower))
+    println(sqrt((12).toDouble()).toInt())
 }
