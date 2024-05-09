@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
 private fun solution(today: String, terms: Array<String>, privacies: Array<String>): IntArray {
+    var answer: IntArray = intArrayOf()
     val dateFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
     val todayInfo = LocalDate.parse(today,dateFormatter)
 
@@ -15,13 +16,15 @@ private fun solution(today: String, terms: Array<String>, privacies: Array<Strin
         }
     }
 
-    return privacies.mapIndexedNotNull { index, str ->
-        val expirationDate = LocalDate.parse(str.substringBefore(" "),dateFormatter)
+    privacies.forEachIndexed { index, str ->
+        val expirationDate = LocalDate.parse(str.dropLast(2),dateFormatter)
 
-        if (ChronoUnit.MONTHS.between(expirationDate, todayInfo) >= (termsInfo[str.substringAfter(" ")] ?: 999)) {
-            index + 1
-        } else { null }
-    }.toIntArray()
+        if (ChronoUnit.MONTHS.between(expirationDate,todayInfo) >= termsInfo["${str.last()}"] ?:999) {
+            answer += index + 1
+        }
+    }
+
+    return answer
 }
 
 fun main() {
