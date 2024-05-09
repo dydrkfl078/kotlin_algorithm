@@ -16,15 +16,13 @@ private fun solution(today: String, terms: Array<String>, privacies: Array<Strin
         }
     }
 
-    privacies.forEachIndexed { index, str ->
-        val expirationDate = LocalDate.parse(str.dropLast(2),dateFormatter)
+    return privacies.mapIndexedNotNull { index, str ->
+        val expirationDate = LocalDate.parse(str.substringBefore(" "),dateFormatter)
 
-        if (ChronoUnit.MONTHS.between(expirationDate,todayInfo) >= termsInfo["${str.last()}"] ?:999) {
-            answer += index + 1
-        }
-    }
-
-    return answer
+        if (ChronoUnit.MONTHS.between(expirationDate, todayInfo) >= (termsInfo[str.substringAfter(" ")] ?: 999)) {
+            index + 1
+        } else { null }
+    }.toIntArray()
 }
 
 fun main() {
