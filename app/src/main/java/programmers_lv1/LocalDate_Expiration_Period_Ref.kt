@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
 private fun solution(today: String, terms: Array<String>, privacies: Array<String>): IntArray {
-    var answer: IntArray = intArrayOf()
     val dateFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd")
     val todayInfo = LocalDate.parse(today,dateFormatter)
 
