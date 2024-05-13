@@ -14,6 +14,10 @@ private fun solution(n: Int): Long {
     return answer % 1234567
 }
 
+// 1이 n개일 때 = 1
+// 2가 1개일 때 = n-1C1
+// 2가 2개일 때 = n-1C2
+
 fun factorial(n: Long): Long {
     var answer = 1L
 
@@ -61,13 +65,13 @@ fun main() {
 //    println("combination 다1일 경우= ${comb(2,1)}") // n = 3 출력 : 2
 //    println("combination 다1일 경우= ${comb(3,0)}") // n = 3 출력 : 1
 //
-    // 즉 nCr 일 때, n + r이 number로 유지되도록 n - 1 , r + 1 반복문을 돌리고, r은 n을 넘을 수 없다
-    println("combination 다1일 경우= ${comb(10,0)}") // n = 10 출력 : 6
-    println("combination 다1일 경우= ${comb(9,1)}") // n = 10 출력 : 6
-    println("combination 다1일 경우= ${comb(8,2)}") // n = 10 출력 : 6
-    println("combination 다1일 경우= ${comb(7,3)}") // n = 10 출력 : 6
-    println("combination 다1일 경우= ${comb(6,4)}") // n = 10 출력 : 6
-    println("combination 다1일 경우= ${comb(5,5)}") // n = 10 출력 : 6
+//    // 즉 nCr 일 때, n + r이 number로 유지되도록 n - 1 , r + 1 반복문을 돌리고, r은 n을 넘을 수 없다
+//    println("combination 다1일 경우= ${comb(4,2)}") // n = 6 출력 : 6
+//    println("combination 다1일 경우= ${comb(5,2)}") // n = 7 출력 : 10
+//    println("combination 다1일 경우= ${comb(6,2)}") // n = 8 출력 : 15
+//    println("combination 다1일 경우= ${comb(7,2)}") // n = 9 출력 : 21
+//    println("combination 다1일 경우= ${comb(8,2)}") // n = 10 출력 : 28
+//    println("combination 다1일 경우= ${comb(9,2)}") // n = 11 출력 : 36
 
 
 //    println(solution(n))
