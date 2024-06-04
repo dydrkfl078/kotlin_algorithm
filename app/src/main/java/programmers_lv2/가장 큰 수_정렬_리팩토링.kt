@@ -9,7 +9,7 @@ private fun solution(numbers: IntArray): String {
         (b + a).compareTo(a + b)
     })
 
-    // 스트링 빌더에 정렬된 숫자들을 추가
+    // 결과 값에 정렬된 숫자들을 추가
     val result = sortedNums.joinToString("")
 
     // 모든 숫자가 0인 경우를 처리
