@@ -43,7 +43,7 @@ private fun solution(clothes: Array<Array<String>>): Int {
     return answer
 }
 
-fun <T> getAllCombinations(list: List<T>): List<List<T>> {
+private fun <T> getAllCombinations(list: List<T>): List<List<T>> {
     if (list.isEmpty()) {
         return listOf(listOf())
     }
