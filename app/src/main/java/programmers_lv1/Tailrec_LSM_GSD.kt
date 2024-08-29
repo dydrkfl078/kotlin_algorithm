@@ -1,6 +1,6 @@
 package programmers_lv1
 
-// LCM = Least Common Multiple 최소 공배수 , GCD = Greatest Common Divisor
+// LSM = Least Common Multiple 최소 공배수 , GSD = Greatest Common Divisor
 private fun solution(n: Int, m: Int): LongArray {
     var numbers = intArrayOf(n,m).sorted()
 
